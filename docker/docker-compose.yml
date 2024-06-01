@@ -1,0 +1,31 @@
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: php-movies-search
+        ports:
+            - "9000:9000"
+        restart: always
+        working_dir: /var/www
+        volumes:
+            - ../app:/var/www
+        networks:
+            - movies-search
+    nginx:
+        build:
+            context: .
+            dockerfile: NginxDockerFile
+        container_name: nginx-movies-search
+        links:
+            - php
+        restart: always
+        ports:
+            - "8050:80"
+        volumes:
+            - ../app:/var/www
+        networks:
+            - movies-search
+
+networks:
+    movies-search:
