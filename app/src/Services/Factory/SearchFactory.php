@@ -29,7 +29,7 @@ final readonly class SearchFactory
             SearchType::WORD_COUNT => new WordCountSearchStrategy($this->moviesProvider),
 
             default => throw new InvalidArgumentException(
-                sprintf('Search strategy for %s type does not exists', get_class($searchType))
+                sprintf('Search strategy for %s type does not exists', $searchType->name)
             ),
         };
     }

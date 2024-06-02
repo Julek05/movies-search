@@ -29,7 +29,7 @@ class SearchController extends AbstractController
             $errors = $validator->validate($searchTypeRequest);
 
             if (count($errors) > 0) {
-                return new JsonResponse(['message' => (string)$errors], Response::HTTP_BAD_REQUEST);
+                return $this->json(['message' => (string)$errors], Response::HTTP_BAD_REQUEST);
             }
             $searchStrategy = $searchFactory->make($searchTypeRequest->getTypeAsEnum());
 

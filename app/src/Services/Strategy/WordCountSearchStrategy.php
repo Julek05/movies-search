@@ -16,10 +16,10 @@ final class WordCountSearchStrategy implements SearchStrategyInterface
 
     public function execute(): array
     {
-        $allMovies = array_unique($this->moviesProvider->provide());
+        $movies = array_unique($this->moviesProvider->provide());
 
         return $this->convertToList(
-            array_filter($allMovies, fn(string $movie) => count(explode(' ', $movie)) >= self::MINIMUM_WORD_COUNT)
+            array_filter($movies, fn(string $movie) => count(explode(' ', $movie)) >= self::MINIMUM_WORD_COUNT)
         );
     }
 
