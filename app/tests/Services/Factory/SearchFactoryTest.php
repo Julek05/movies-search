@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace tests\Services\Factory;
 
-use App\Enum\SearchTypeEnum;
+use App\Enum\SearchType;
 use App\Services\Factory\SearchFactory;
 use App\Services\Provider\MoviesProvider;
 use App\Services\Strategy\CharacterSearchStrategy;
@@ -17,7 +17,7 @@ class SearchFactoryTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function test_make(SearchTypeEnum $searchType, string $expectedSearchStrategyClassName): void
+    public function test_make(SearchType $searchType, string $expectedSearchStrategyClassName): void
     {
         $testClass = new SearchFactory(new MoviesProvider());
 
@@ -27,9 +27,9 @@ class SearchFactoryTest extends TestCase
     public function provider(): array
     {
         return [
-            [SearchTypeEnum::RANDOM, RandomSearchStrategy::class],
-            [SearchTypeEnum::CHARACTER, CharacterSearchStrategy::class],
-            [SearchTypeEnum::WORD_COUNT, WordCountSearchStrategy::class],
+            [SearchType::RANDOM, RandomSearchStrategy::class],
+            [SearchType::CHARACTER, CharacterSearchStrategy::class],
+            [SearchType::WORD_COUNT, WordCountSearchStrategy::class],
         ];
     }
 }
