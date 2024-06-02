@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
+namespace Tests\Services\Strategy;
+
 use App\Services\Provider\MoviesProvider;
 use App\Services\Strategy\RandomSearchStrategy;
 use PHPUnit\Framework\TestCase;
 
 class RandomSearchStrategyTest extends TestCase
 {
-    public function test_search(): void
+    public function test_execute(): void
     {
         $testClass = new RandomSearchStrategy(new MoviesProvider());
 
