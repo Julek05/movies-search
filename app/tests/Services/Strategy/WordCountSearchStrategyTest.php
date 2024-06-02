@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Services\Strategy;
+namespace tests\Services\Strategy;
 
 use App\Services\Provider\MoviesProviderInterface;
 use App\Services\Strategy\WordCountSearchStrategy;
